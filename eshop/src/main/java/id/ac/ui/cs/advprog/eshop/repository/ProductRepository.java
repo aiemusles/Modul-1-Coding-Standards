@@ -41,6 +41,7 @@ public class ProductRepository {
         return null;
     }
 
+    // Returns true if the object to be deleted is found and deleted, false otherwise
     public boolean deleteById(String productId) {
         Iterator<Product> iterator = productData.iterator();
         while (iterator.hasNext()) {
