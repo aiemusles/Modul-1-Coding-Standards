@@ -11,7 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,19 +33,20 @@ public class EditProductTest {
         product.setProductQuantity(10);
         when(productRepository.findById("prod-1")).thenReturn(Optional.of(product));
 
-        Product result = productService.findById("prod-1");
+        Optional<Product> result = productService.findById("prod-1");
 
-        assertEquals(product, result);
+        assertTrue(result.isPresent());
+        assertEquals(product, result.get());
         verify(productRepository).findById("prod-1");
     }
 
     @Test
-    void findByIdReturnsNullWhenMissing() {
+    void findByIdReturnsEmptyWhenMissing() {
         when(productRepository.findById("missing")).thenReturn(Optional.empty());
 
-        Product result = productService.findById("missing");
+        Optional<Product> result = productService.findById("missing");
 
-        assertNull(result);
+        assertFalse(result.isPresent());
         verify(productRepository).findById("missing");
     }
 
