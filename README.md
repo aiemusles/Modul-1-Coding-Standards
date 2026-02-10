@@ -1,3 +1,7 @@
+Reflection 1:
+There are several clean code principles used in the codebase. First, i ensured i used clear and meaningful names for my fields and methods. Then, i made sure every method just do one thing/action without side effects. I also implemented null safety by using optional class in methods that may return null. So far, i haven't encountered any mistakes while making the source code due to carefully planning the code i write, and by paying attention to the forum for previous issues.
+
+
 Reflection 2:
 1. After writing the unit test, i feel more assured about the quality of the code written.
    It may not be perfect, but it is certainly producing the expected behaviour in all the case tested.
@@ -8,7 +12,7 @@ Reflection 2:
    Also, just because a code has 100% code coverage, that doesn't mean your code has no bugs or errors, that just means the code behaves as the test intended following
    from the cases created. Some unforeseen cases could arise which won't be knowingly tested (And corrected) without hindsight.
 
-   2. Likely code-quality concerns:
+2. Likely code-quality concerns:
       - Duplicate setup/teardown and instance variables across functional tests violate DRY; harder to maintain when endpoints or credentials change.
       - Repeated locators/URL literals are magic strings and brittle if the UI changes.
       - Mixed responsibilities: test methods may handle both navigation and assertions without abstraction, reducing readability.
